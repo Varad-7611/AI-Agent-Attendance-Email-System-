@@ -217,6 +217,7 @@ The Attendance Email AI Agent continuously monitors the health and performance o
 <img width="1860" height="592" alt="image" src="https://github.com/user-attachments/assets/6cd40862-4476-42ea-a6b4-0fe5235f6fbd" />
 
 The monitoring dashboard provides real-time insights into the enabled Google Cloud APIs used by the project.
+
 ---
 
 # 📧 AI Generated Email
