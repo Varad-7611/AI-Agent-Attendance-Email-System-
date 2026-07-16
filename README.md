@@ -28,25 +28,37 @@ The project uses Google Drive API, Google Sheets API, Groq API, and SMTP Email S
 # 🏗️ System Architecture
 
 ```text
-Google Drive Folder
-        │
-        ▼
-Google Drive API
-        │
-        ▼
-Google Sheets API
-        │
-        ▼
-Attendance AI Agent
-        │
-        ├── Drive Scanner
-        ├── Spreadsheet Reader
-        ├── Attendance Processor
-        ├── Groq Email Generator
-        └── SMTP Email Sender
-        │
-        ▼
-Student Email Inbox
+                     Google Cloud Platform
+                              │
+                              ▼
+                   Google Service Account
+                              │
+                              ▼
+                     Google Drive MCP
+                              │
+                              ▼
+                     Google Drive API
+                              │
+                              ▼
+                    Google Sheets API
+                              │
+                              ▼
+                Attendance Email AI Agent
+                              │
+        ┌─────────────────────────────────────────┐
+        │                                         │
+        ▼                                         ▼
+ Drive Scanner                         Attendance Processor
+        │                                         │
+        └─────────────────┬───────────────────────┘
+                          ▼
+                 Groq AI Email Generator
+                          │
+                          ▼
+                  SMTP Email Service
+                          │
+                          ▼
+                 Student Email Inbox
 ```
 
 ---
@@ -56,6 +68,7 @@ Student Email Inbox
 - Python 3.11+
 - Google Drive API
 - Google Sheets API
+- Google Drive MCP
 - Google Service Account
 - Groq API
 - SMTP
@@ -147,7 +160,7 @@ Example:
 
 Each spreadsheet stores attendance records.
 
-| Roll No | Student Name | Email | 9:15–10:15 | 10:15–11:15 | 11:30–12:30 | 12:30–1:30 |
+| Roll No | Student Name | Email | 9:15–10:15 (AI)| 10:15–11:15 (DL) | 11:30–12:30 (DBMS)| 12:30–1:30 (DSA) |
 |----------|--------------|--------|------------|-------------|-------------|-------------|
 | 101 | Rahul | rahul@email.com | P | A | P | A |
 
@@ -196,6 +209,25 @@ The email includes:
 
 ---
 
+# 📈 API Monitoring Dashboard
+
+The Attendance Email AI Agent continuously monitors the health and performance of the Google Cloud services used during execution.
+
+
+<img width="1860" height="592" alt="image" src="https://github.com/user-attachments/assets/6cd40862-4476-42ea-a6b4-0fe5235f6fbd" />
+
+The monitoring dashboard provides real-time insights into the enabled Google Cloud APIs used by the project.
+---
+
+# 📧 AI Generated Email
+
+The AI Agent generates a personalized attendance notification using the Groq LLM and sends a single email to each absent student, even if they are absent in multiple lectures.
+
+<img width="687" height="626" alt="image" src="https://github.com/user-attachments/assets/f3aebb2c-0cb1-4716-9211-244e294f7e53" />
+
+
+---
+
 # 🔐 Security
 
 The project stores all sensitive information using environment variables.
@@ -203,15 +235,16 @@ The project stores all sensitive information using environment variables.
 Example:
 
 ```env
-GROQ_API_KEY=
-
+GROQ_MODEL=
 GOOGLE_DRIVE_FOLDER_URL=
-
-EMAIL_ADDRESS=
-
-EMAIL_PASSWORD=
-
 SERVICE_ACCOUNT_FILE=
+SMTP_HOST=
+SMTP_PORT=
+SMTP_USERNAME=
+SMTP_PASSWORD=
+SMTP_FROM_EMAIL=
+SMTP_FROM_NAME=
+GORQ_API_KEY=
 ```
 
 Credentials are never hardcoded inside the source code.
