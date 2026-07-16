@@ -1,0 +1,149 @@
+:root {
+    --bg: #0b1120;
+    --card: rgba(17, 24, 39, 0.9);
+    --accent: #2563eb;
+    --accent-soft: #38bdf8;
+    --text: #ffffff;
+    --muted: #9ca3af;
+    --border: rgba(148, 163, 184, 0.14);
+    --shadow: 0 24px 70px rgba(2, 6, 23, 0.45);
+}
+
+html, body, [class*="css"] {
+    font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+.stApp {
+    background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.16), transparent 24%),
+        linear-gradient(180deg, #0b1120 0%, #0f172a 100%);
+    color: var(--text);
+}
+
+.block-container {
+    max-width: 1100px;
+    padding-top: 1.6rem;
+    padding-bottom: 2rem;
+}
+
+.app-shell {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 1.5rem 1.6rem;
+    border-radius: 26px;
+    border: 1px solid var(--border);
+    background: linear-gradient(135deg, rgba(17, 24, 39, 0.92), rgba(15, 23, 42, 0.8));
+    box-shadow: var(--shadow);
+}
+
+.app-shell h1 {
+    margin: 0.35rem 0 0.45rem;
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.04em;
+}
+
+.app-shell p,
+.mini-label,
+.header-date {
+    color: var(--muted);
+}
+
+.mini-label {
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.74rem;
+}
+
+.header-date {
+    padding-top: 0.35rem;
+    white-space: nowrap;
+}
+
+.panel {
+    margin: 1rem 0;
+    padding: 1.25rem;
+    border-radius: 24px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(18px);
+}
+
+.stMetric {
+    background: rgba(17, 24, 39, 0.88);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 0.8rem;
+    box-shadow: var(--shadow);
+}
+
+.stTextInput label {
+    color: var(--muted) !important;
+}
+
+.stTextInput input {
+    background: rgba(15, 23, 42, 0.94) !important;
+    color: var(--text) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 16px !important;
+}
+
+.stSelectbox label {
+    color: var(--muted) !important;
+}
+
+.stSelectbox div[data-baseweb="select"] > div {
+    background: rgba(15, 23, 42, 0.94) !important;
+    color: var(--text) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 16px !important;
+}
+
+.stButton button {
+    width: 100%;
+    border: none !important;
+    border-radius: 16px !important;
+    padding: 0.8rem 1rem !important;
+    color: white !important;
+    background: linear-gradient(135deg, var(--accent), var(--accent-soft)) !important;
+    box-shadow: 0 16px 40px rgba(37, 99, 235, 0.34) !important;
+    transition: transform 200ms ease, box-shadow 200ms ease !important;
+}
+
+.stButton button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 22px 44px rgba(37, 99, 235, 0.42) !important;
+}
+
+[data-testid="stDataFrame"] {
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+[data-testid="stDataFrame"] div[role="table"] {
+    background: rgba(15, 23, 42, 0.88);
+}
+
+[data-testid="stDataFrame"] [role="columnheader"] {
+    background: rgba(17, 24, 39, 1) !important;
+    color: white !important;
+}
+
+.stCodeBlock {
+    border-radius: 18px !important;
+    overflow: hidden;
+}
+
+[data-testid="stProgressBar"] > div > div {
+    background: linear-gradient(90deg, var(--accent), var(--accent-soft)) !important;
+}
+
+@media (max-width: 768px) {
+    .app-shell {
+        flex-direction: column;
+    }
+}
