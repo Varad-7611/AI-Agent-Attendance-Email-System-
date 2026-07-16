@@ -309,6 +309,4 @@ This project is licensed under the MIT License.
 
 ---
 
-# 👨‍💻 Developer
 
-Developed as an AI Engineering project using Google Cloud APIs, Groq LLM, and Python to automate attendance notifications for educational institutions.
